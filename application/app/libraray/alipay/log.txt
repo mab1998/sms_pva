@@ -1,0 +1,1 @@
+2018-03-15 18:01:30  {"product_code":"FAST_INSTANT_TRADE_PAY","body":"Invoice payment","subject":"Invoice ID# 1","total_amount":"200.00","out_trade_no":1}

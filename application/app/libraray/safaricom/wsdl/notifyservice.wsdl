@@ -1,0 +1,87 @@
+<?xml version="1.0"?>
+<definitions name="SMS_Notify_Service" targetNamespace="http://www.csapi.org/schema/parlayx/data/sync/v1_0/local" xmlns:tns="http://www.csapi.org/schema/parlayx/data/sync/v1_0/local"  xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <xsd:schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.csapi.org/schema/parlayx/data/sync/v1_0/local">
+	   <xsd:simpleType name="DeliveryStatus">
+	      <xsd:restriction base="xsd:string">
+	         <xsd:enumeration value="DeliveredToNetwork"/>
+	         <xsd:enumeration value="DeliveryUncertain"/>
+	         <xsd:enumeration value="DeliveryImpossible"/>
+	         <xsd:enumeration value="MessageWaiting"/>
+	         <xsd:enumeration value="DeliveredToTerminal"/>
+	         <xsd:enumeration value="DeliveryNotificationNotSupported"/>
+	      </xsd:restriction>
+	   </xsd:simpleType>		   
+	   <xsd:complexType name="DeliveryInformation">
+	      <xsd:sequence>
+	         <xsd:element name="address" type="xsd:anyURI"/>
+	         <xsd:element name="deliveryStatus" type="tns:DeliveryStatus"/>
+	      </xsd:sequence>
+	   </xsd:complexType>
+	   <xsd:complexType name="SmsMessage">
+	      <xsd:sequence>
+	         <xsd:element name="message" type="xsd:string"/>
+	         <xsd:element name="senderAddress" type="xsd:anyURI"/>
+	         <xsd:element name="smsServiceActivationNumber" type="xsd:anyURI"/>
+	         <xsd:element name="dateTime" type="xsd:dateTime" minOccurs="0" maxOccurs="1"/>
+	      </xsd:sequence>
+	   </xsd:complexType>	  
+	</xsd:schema>	
+		
+  </types>
+  
+  <message name="notifySmsDeliveryReceiptRequest">
+	<part name="correlator" type="xsd:string" />
+	<part name="deliveryStatus" type="tns:DeliveryInformation" />
+  </message>
+  
+  <message name="notifySmsDeliveryReceiptResponse">
+  </message>
+  
+  <message name="notifySmsReceptionRequest">
+	<part name="correlator" type="xsd:string" />
+	<part name="message" type="tns:SmsMessage" />
+  </message>
+  
+  <message name="notifySmsReceptionResponse">
+  </message>
+  
+  <portType name="SmsNotificationPort">
+	<operation name="notifySmsDeliveryReceipt">
+		  <input message="tns:notifySmsDeliveryReceiptRequest" />
+		  <output message="tns:notifySmsDeliveryReceiptResponse" />
+	</operation>
+	<operation name="notifySmsReception">
+		  <input message="tns:notifySmsReceptionRequest" />
+		  <output message="tns:notifySmsReceptionResponse" />
+	</operation>
+  </portType>
+  
+  <binding name="SmsNotificationBinding" type="tns:SmsNotificationPort">
+	<soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http" />
+	<operation name="notifySmsDeliveryReceipt">
+		<soap:operation soapAction="" />
+		<input>
+		  <soap:body use="encoded" namespace="http://www.csapi.org/schema/parlayx/data/sync/v1_0/local" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />		  
+		</input>
+		<output>
+		  <soap:body use="encoded" namespace="http://www.csapi.org/schema/parlayx/data/sync/v1_0/local" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />		  
+		</output>
+	</operation>
+	<operation name="notifySmsReception">
+		<soap:operation soapAction="" />
+		<input>
+		  <soap:body use="encoded" namespace="http://www.csapi.org/schema/parlayx/data/sync/v1_0/local" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />		  
+		</input>
+		<output>
+		  <soap:body use="encoded" namespace="http://www.csapi.org/schema/parlayx/data/sync/v1_0/local" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />		  
+		</output>
+	</operation>
+   </binding>
+  
+  <service name="SmsNotifyService">
+	<port name="SmsNotificationPort" binding="tns:SmsNotificationBinding">
+	  	<soap:address location="http://localhost/test/notifyservice.php" />
+	</port>
+  </service>
+</definitions>

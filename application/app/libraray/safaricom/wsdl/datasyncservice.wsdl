@@ -1,0 +1,88 @@
+<?xml version="1.0"?>
+<definitions name="DataSyncService" targetNamespace="http://www.csapi.org/schema/parlayx/data/sync/v1_0/local" xmlns:tns="http://www.csapi.org/schema/parlayx/data/sync/v1_0/local"  xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <xsd:schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="urn:MyBookSearch">
+	    <xsd:complexType name="UserID">
+		<xsd:sequence>
+			<xsd:element name="ID" type="xsd:string" />
+			<xsd:element name="type" type="xsd:int" />
+		</xsd:sequence>
+	   </xsd:complexType>		   
+	   <xsd:complexType name="NamedParameterList">
+		<xsd:sequence>
+			<xsd:element name="item" type="tns:NamedParameter" minOccurs="0" maxOccurs="unbounded" />
+		</xsd:sequence>
+	   </xsd:complexType>
+	   <xsd:complexType name="NamedParameter">
+		<xsd:sequence>
+			<xsd:element name="key" type="xsd:string" />
+			<xsd:element name="value" type="xsd:string" />
+		</xsd:sequence>
+	   </xsd:complexType>
+	   <xsd:simpleType name="DeliveryStatus">
+	      <xsd:restriction base="xsd:string">
+	         <xsd:enumeration value="DeliveredToNetwork"/>
+	         <xsd:enumeration value="DeliveryUncertain"/>
+	         <xsd:enumeration value="DeliveryImpossible"/>
+	         <xsd:enumeration value="MessageWaiting"/>
+	         <xsd:enumeration value="DeliveredToTerminal"/>
+	         <xsd:enumeration value="DeliveryNotificationNotSupported"/>
+	      </xsd:restriction>
+	   </xsd:simpleType>
+	  
+	   <xsd:complexType name="DeliveryInformation">
+	      <xsd:sequence>
+	         <xsd:element name="address" type="xsd:anyURI"/>
+	         <xsd:element name="deliveryStatus" type="tns:DeliveryStatus"/>
+	      </xsd:sequence>
+	   </xsd:complexType>  
+	 	  
+	</xsd:schema>	
+		
+  </types>
+  
+  <message name="syncOrderRelationRequest">
+    <part name="userID" type="tns:UserID" />
+    <part name="spID" type="xsd:string" />
+    <part name="productID" type="xsd:string" />
+    <part name="serviceID" type="xsd:string" />
+    <part name="serviceList" type="xsd:string" />
+    <part name="updateType" type="xsd:int" />
+    <part name="updateTime" type="xsd:string" />
+    <part name="updateDesc" type="xsd:string" />
+    <part name="effectiveTime" type="xsd:string" />
+    <part name="expiryTime" type="xsd:string" />
+    <part name="extensionInfo" type="tns:NamedParameterList" />
+  </message>
+  
+  <message name="syncOrderRelationResponse">
+    <part name="result" type="xsd:int" />
+    <part name="resultDescription" type="xsd:string" />
+  </message>
+  
+  <portType name="DataSyncPort">
+    <operation name="syncOrderRelation">
+	  <input message="tns:syncOrderRelationRequest" />
+	  <output message="tns:syncOrderRelationResponse" />
+	</operation>
+  </portType>
+  
+  <binding name="DataSyncBinding" type="tns:DataSyncPort">
+    <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http" />
+	  <operation name="syncOrderRelation">
+	    <soap:operation soapAction="urn:syncOrderRelation" />
+		<input>
+		  <soap:body use="encoded" namespace="http://www.csapi.org/schema/parlayx/data/sync/v1_0/local" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />		  
+		</input>
+		<output>
+		  <soap:body use="encoded" namespace="http://www.csapi.org/schema/parlayx/data/sync/v1_0/local" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />		  
+		</output>
+	  </operation>
+  </binding>
+  
+  <service name="DataSyncService">
+    <port name="DataSyncPort" binding="tns:DataSyncBinding">
+	  <soap:address location="http://localhost/test/integrated_services.php" />
+	</port>
+  </service>
+</definitions>

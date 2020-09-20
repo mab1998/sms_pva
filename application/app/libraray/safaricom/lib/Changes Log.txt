@@ -1,0 +1,8 @@
+2013-03-01: Changed nusoap.php on line 7674 to fix some warning while running the code Notice: Undefined property: nusoap_client::$operation in C:\wamp\www\ws\libs\nusoap.php on line 7674
+
+//added by Samuel Kamochu Kamochu(kamochu@gmail.com)
+if(empty($this->operation)){
+	$this->operation="";
+}
+
+

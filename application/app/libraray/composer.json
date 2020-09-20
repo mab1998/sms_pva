@@ -1,0 +1,5 @@
+{
+    "require": {
+        "slydepay/slydepay-soap": "^1.1"
+    }
+}

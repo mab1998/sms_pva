@@ -1,0 +1,312 @@
+.bootstrap-datetimepicker-widget {
+    visibility: visible;
+    opacity: 1;
+    z-index: 99999999999;
+}
+
+.form-group-default .form-control {
+    height: auto;
+}
+
+
+.font-45 {
+    font-size: 45px !important;
+}
+.font-15 {
+    font-size: 15px !important;
+}
+.bg-complete-darker {
+    background-color: #2B6A94 !important;
+}
+.p-2 {
+    padding: 2px !important;
+}
+
+.form-block .form-group{
+    display: block;
+}
+
+.form-block .form-control {
+    display: block;
+    width: 100%;
+}
+
+.bar-notification .dropdown-menu.lang-dropdown {
+    width: 150px;
+}
+.lang-dropdown .user-thumb,
+.lang-dropdown .user-name {
+    display: inline-block;
+    vertical-align: middle;
+}
+.lang-dropdown .user-name {
+    margin-left: 8px;
+}
+
+
+.single-support-reply {
+    background-color: #F3F3F4;
+    padding: 12px;
+    box-shadow: 0px 1px 0px #E0E0E0, 0px 2px 0px #FFFFFF;
+    margin-bottom: 2px;
+}
+.single-support-reply:last-child {
+    margin-bottom: 0px;
+    box-shadow: none;
+}
+
+.reply-user-thumb {
+    border-radius: 50%;
+    width: 38px;
+    height: 38px;
+    float: left;
+    margin-right: 10px;
+}
+.reply-message {
+    margin: 0px;
+}
+
+.reply-info-text {
+    overflow: hidden;
+}
+.reply-user-name {
+    display: inline-block;
+    margin: 0px;
+    font-weight: 500;
+    color: #01BCD4;
+}
+.reply-date {
+    display: inline-block;
+    margin: 0px;
+    font-weight: 400;
+}
+.single-support-reply.client .reply-user-thumb {
+    margin-right: 0px;
+    margin-left: 20px;
+    float: right;
+}
+.single-support-reply.client  .reply-info-text {
+    text-align: right;
+}
+
+
+.single-support-reply.client .label-success,
+.single-support-reply.client .badge-success {
+    background-color: #32C700;
+}
+.single-support-reply.client .reply-user-name {
+    color: #32C700;
+}
+
+
+@media(max-width: 1199px) {
+    .ticket-status-title {
+        width: 110px;
+    }
+    .btn-sm, .btn-group-sm>.btn {
+        padding: 4px 8px;
+    }
+    .p40, .p-xl {
+        padding: 20px !important;
+    }
+}
+
+
+@media(max-width: 500px) {
+    .ticket-status-title {
+        float: none;
+        width: 100%;
+    }
+    .ticket-status-content {
+        margin-bottom: 10px;
+    }
+
+    .reply-user-thumb {
+        width: 38px;
+        height: 38px;
+        margin-right: 10px;
+    }
+
+    .single-support-reply.client .reply-user-thumb {
+        margin-right: 0px;
+        margin-left: 10px;
+    }
+
+    .p40, .p-xl {
+        padding: 10px !important;
+    }
+
+    .action-bar {
+        margin-bottom: 20px;
+    }
+}
+
+.thumbnail-user{
+    display: block;
+    padding: 4px;
+    line-height: 1.42857143;
+    background-color: #fff;
+    margin-left: 80px;
+}
+
+.app-logo{
+    max-width: 60px;
+    padding: 17px 30px !important;
+}
+
+.hr-dotted {
+    border: 1px dashed #dedede;
+    margin-bottom: 15px;
+}
+
+
+.bottom-inv-con {
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+.grand-total-box {
+    display: table;
+    margin-left: auto;
+    background-color: #01BCD4;
+    color: #fff;
+    padding: 8px;
+    border-radius: 3px;
+}
+.grand-total-box strong {
+    margin-right: 10px;
+}
+
+.invoice-view {
+    background-color: #F3F3F4;
+}
+.invoice-view > thead > tr > th, .invoice-view > tbody > tr > th, .invoice-view > tfoot > tr > th, .invoice-view > thead > tr > td, .invoice-view > tbody > tr > td, .invoice-view > tfoot > tr > td {
+    padding: 15px 25px 15px;
+}
+.invoice-view > thead > tr > th:first, .invoice-view > tbody > tr > th:first, .invoice-view > tfoot > tr > th:first, .invoice-view > thead > tr > td:first, .invoice-view > tbody > tr > td:first, .invoice-view > tfoot > tr > td:first {
+    text-align: left;
+}
+.invoice-view > thead > tr > th:last-child, .invoice-view > tbody > tr > th:last-child, .invoice-view > tfoot > tr > th:last-child, .invoice-view > thead > tr > td:last-child, .invoice-view > tbody > tr > td:last-child, .invoice-view > tfoot > tr > td:last-child {
+    text-align: right;
+}
+.invoice-summary {
+    border: 1px solid #ddd;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+.inv-block {
+    padding: 15px 30px;
+}
+.inv-block.last {
+    background-color: #01BCD4;
+    color: #fff;
+}
+.inv-block p {
+    font-size: 24px;
+    font-weight: 300;
+}
+
+h3.count-title {
+    font-weight: 400;
+}
+
+.bill-data {
+    text-align: right;
+}
+
+.bill-data-title {
+    font-weight: 500;
+    width: 160px;
+    display: inline-block;
+    text-align: left;
+}
+.bill-data-value {
+    display: inline-block;
+    width: 100px;
+}
+.invoice-to-client-name {
+    font-size: 20px;
+    font-weight: 400;
+    margin: 15px 0px 15px;
+}
+.bill-info {
+    margin-bottom: 30px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 20px;
+}
+.well {
+    box-shadow: none;
+    border-radius: 0px;
+    background-color: transparent;
+    margin: 0px;
+}
+
+.bill-data-status {
+    display: inline-block;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-size: 12px;
+}
+
+
+/*===== Pdf button ====*/
+
+.btn-pdf, .btn-pdf:focus {
+    color: #ffffff !important;
+    background-color: #626262 !important;
+    border-color: #626262 !important;
+}
+
+.btn-pdf.hover,
+.btn-pdf:hover,
+.open>.dropdown-toggle.btn-pdf {
+    background-color: #626060 !important;
+    border-color: #626060 !important;
+    color: #ffffff !important;
+}
+
+.btn-pdf.active,
+.btn-pdf:active,
+.btn-pdf.active:focus,
+.btn-pdf:active:focus,
+.btn-pdf.active:hover,
+.btn-pdf:active:hover,
+.open>.dropdown-toggle.btn-pdf:focus,
+.open>.dropdown-toggle.btn-pdf:hover,
+.open>.dropdown-toggle.btn-pdf.focus {
+    background-color: #626267 !important;
+    border-color: #626267 !important;
+    color: #ffffff !important;
+}
+
+body.no-nav-animation,
+body.no-nav-animation .left-nav-bar {
+    -webkit-transition: none;
+    transition: none;
+}
+
+div.dt-buttons{
+    position:relative;
+    float:right;
+    margin-right: 20px;
+}
+
+.dataTables_length{
+    display: inline-block;
+    margin-bottom: 30px;
+}
+
+.language-var {
+    display: inline-block;
+    float: right;
+    padding: 15px;
+    position: relative;
+}
+
+.language-var .dropdown-menu.arrow.right-arrow:before{
+    right: auto;
+    left: 15px;
+}
+.language-var .dropdown-menu.arrow.right-arrow:after{
+    right: auto;
+    left: 15px;
+}

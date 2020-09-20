@@ -1,0 +1,601 @@
+body {direction:rtl;}
+
+body.has-left-bar{
+    padding-right: 70px;
+    padding-left: 0;
+}
+
+body.left-bar-open{
+    padding-right: 260px;
+    padding-left: 0;
+}
+
+.btn{
+    padding-right: 17px;
+    padding-left: 17px;
+}
+
+.btn-lg, .btn-group-lg>.btn{
+    padding-right: 28px;
+    padding-left: 28px;
+}
+
+.btn-sm, .btn-group-sm>.btn{
+    padding-right: 14px;
+    padding-left: 14px;
+}
+
+.btn-mini-group.dropdown-default .btn.dropdown-toggle{
+    padding-left: 17px;
+    padding-right: 0;
+}
+
+.btn-mini-group.dropdown-default .btn.dropdown-toggle.btn-sm{
+    padding-left: 14px;
+    padding-right: 0;
+}
+
+.btn-mini-group.dropdown-default .dropdown-menu{
+    padding: 40px 0 7px 0px !important;
+}
+
+.btn-mini-group.dropdown-default .btn-primary+.dropdown-menu:after, .btn-mini-group.dropdown-default .btn-complete+.dropdown-menu:after, .btn-mini-group.dropdown-default .btn-success+.dropdown-menu:after, .btn-mini-group.dropdown-default .btn-warning+.dropdown-menu:after, .btn-mini-group.dropdown-default .btn-danger+.dropdown-menu:after, .btn-mini-group.dropdown-default .btn-info+.dropdown-menu:after{
+    border-radius: 3px 3px 0px 0px;
+}
+
+.btn-animated.from-left:before{
+    right: -100%;
+    left: auto;
+}
+
+.btn-animated.from-top:before{
+    right: 0;
+    left: auto;
+}
+
+.btn-animated.from-left:hover:before, .btn-animated.from-left.show-icon:before, .open .btn-animated.from-left:before, .btn-animated.from-left.active:before{
+    right: 0;
+    left: auto;
+}
+
+.m-r-5{
+    margin-left: 5px !important;
+    margin-right: 0;
+}
+
+.m-l-5{
+    margin-right: 5px !important;
+    margin-left: 0;
+}
+
+.m-r-10{
+    margin-left: 10px !important;
+    margin-right: 0;
+}
+
+.m-l-10{
+    margin-right: 10px !important;
+    margin-left: 0;
+}
+
+.m-r-15{
+    margin-left: 15px !important;
+    margin-right: 0;
+}
+
+.m-l-15{
+    margin-right: 15px !important;
+    margin-left: 0;
+}
+
+.m-r-20{
+    margin-left: 20px !important;
+    margin-right: 0;
+}
+
+.m-l-20{
+    margin-right: 20px !important;
+    margin-left: 0;
+}
+
+.m-r-30{
+    margin-left: 30px !important;
+    margin-right: 0;
+}
+
+.m-l-30{
+    margin-right: 30px !important;
+    margin-left: 0;
+}
+
+.m-r-40{
+    margin-left: 40px !important;
+    margin-right: 0;
+}
+
+.m-l-40{
+    margin-right: 40px !important;
+    margin-left: 0;
+}
+
+.m-r-50{
+    margin-left: 50px !important;
+    margin-right: 0;
+}
+
+.m-l-50{
+    margin-right: 50px !important;
+    margin-left: 0;
+}
+
+.m-r-none{
+    margin-left: 0px !important;
+    margin-right: 0;
+}
+
+.m-l-none{
+    margin-right: 0px !important;
+    margin-left: 0;
+}
+
+.p-r-2{
+    padding-left: 2px !important;
+    padding-right: 0;
+}
+
+.p-l-2{
+    padding-right: 2px !important;
+    padding-left: 0;
+}
+
+.p-r-5{
+    padding-left: 5px !important;
+    padding-right: 0;
+}
+
+.p-l-5{
+    padding-right: 5px !important;
+    padding-left: 0;
+}
+
+.p-r-10{
+    padding-left: 10px !important;
+    padding-right: 0;
+}
+
+.p-l-10{
+    padding-right: 10px !important;
+    padding-left: 0;
+}
+
+.p-r-15{
+    padding-left: 15px !important;
+    padding-right: 0;
+}
+
+.p-l-15{
+    padding-right: 15px !important;
+    padding-left: 0;
+}
+
+.p-r-20{
+    padding-left: 20px !important;
+    padding-right: 0;
+}
+
+.p-l-20{
+    padding-right: 20px !important;
+    padding-left: 0;
+}
+
+.p-r-30{
+    padding-left: 30px !important;
+    padding-right: 0;
+}
+
+.p-l-30{
+    padding-right: 30px !important;
+    padding-left: 0;
+}
+
+.p-r-50{
+    padding-left: 50px !important;
+    padding-right: 0;
+}
+
+.p-l-50{
+    padding-right: 50px !important;
+    padding-left: 0;
+}
+
+.p-r-70{
+    padding-left: 70px !important;
+    padding-right: 0;
+}
+
+.p-l-70{
+    padding-right: 70px !important;
+    padding-left: 0;
+}
+
+.p-r-100{
+    padding-left: 100px !important;
+    padding-right: 0;
+}
+
+.p-l-100{
+    padding-right: 100px !important;
+    padding-left: 0;
+}
+
+.p-r-none{
+    padding-left: 0px !important;
+    padding-right: 0;
+}
+
+.p-l-none{
+    padding-right: 0px !important;
+    padding-left: 0;
+}
+
+.row.row-20{
+    margin-right: -20px;
+    margin-left: -20px;
+}
+
+.cp-linkable .cp-area-link{
+    right: 0px;
+    left: auto;
+}
+
+.article-content ul, .article-content ol{
+    padding-right: 25px;
+    padding-left: 0;
+}
+
+.content-tight-panel{
+    float: left;
+    margin-right: 30px;
+    margin-left: 0;
+}
+
+@media screen and (max-width: 767px){
+    .content-tight-panel{
+        margin-right: 0px;
+    }
+
+}
+
+.bar-setting{
+    float: left;
+}
+
+.left-nav-bar .app-logo{
+    padding-right: 30px;
+    padding-left: 0;
+}
+
+.left-nav-bar{
+    right: 0px;
+    left: auto;
+    margin-right: -190px;
+    margin-left: 0;
+}
+
+.left-bar-open .left-nav-bar{
+    margin-right: 0px;
+}
+
+.left-nav-bar:hover{
+    margin-right: 0px;
+}
+
+.left-nav-bar .nav-top-sec{
+    right: 0px;
+    left: auto;
+}
+
+.left-nav-bar .left-navigation li a{
+    padding: 20px 30px 20px 20px ;
+}
+
+.left-nav-bar .left-navigation li a .menu-text{
+    float: right;
+}
+
+.left-nav-bar .left-navigation li a .menu-thumb{
+    float: left;
+}
+
+.left-nav-bar .left-navigation li a .arrow:after{
+    left: 70px;
+    right: auto;
+}
+
+.left-nav-bar .left-navigation li .sub li > a{
+    padding: 15px 40px 15px 20px ;
+}
+
+.top-bar{
+    right: 0px;
+    left: auto;
+}
+
+.app-logo{
+    float: right;
+}
+
+.top-info-bar{
+    float: right;
+    padding-right: 15px;
+    padding-left: 0;
+    margin-right: 8px;
+    margin-left: 0;
+}
+
+.top-info-bar .bar-notification{
+    margin-left: 5px;
+    margin-right: 0;
+}
+
+.top-info-bar .bar-notification > a:after{
+    left: 3px;
+    right: auto;
+}
+
+.top-bar > .navbar-right{
+    padding-left: 30px;
+    padding-right: 0;
+    float: left;
+}
+
+.user-profile .user-info{
+    margin-left: 5px;
+    margin-right: 0;
+}
+
+.top-bar .navbar-header .navbar-brand{
+    margin-left: 100px;
+    margin-right: 0;
+}
+
+.navbar-toggle{
+    margin-left: 15px;
+    margin-right: 0;
+}
+
+.dropdown-menu.arrow:before{
+    right: 7px;
+    left: auto;
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+}
+
+.dropdown-menu.arrow:after{
+    right: 8px;
+    left: auto;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+}
+
+.dropdown-menu.arrow.right-arrow:before{
+    left: 15px;
+    right: auto;
+}
+
+.dropdown-menu.arrow.right-arrow:after{
+    left: 16px;
+    right: auto;
+}
+
+.dropdown-default .btn.dropdown-toggle{
+    text-align: right;
+    padding-left: 27px;
+    padding-right: 0;
+}
+
+.dropdown-default .dropdown-menu{
+    padding: 42px 0 12px 0px !important;
+}
+
+.dropdown-default.dropup .dropdown-menu{
+    padding: 0 0 52px 3px !important;
+}
+
+.dropdown-default .dropdown-menu:after{
+    right: 0;
+    left: auto;
+}
+
+.dropdown-default .btn.dropdown-toggle .caret{
+    left: 15px;
+    right: auto;
+}
+
+.user-dropdown li .user-thumb{
+    margin-left: 8px;
+    margin-right: 0;
+}
+
+.message-dropdown li .name span{
+    float: left;
+}
+
+.alertify-logs{
+    left: 30px;
+    right: auto;
+}
+
+.alertify-log i{
+    margin-left: 5px;
+    margin-right: 0;
+}
+
+.tooltip.left .tooltip-arrow{
+    border-right-color: #2B2D44;
+    border-left-color: unset;
+}
+
+.tooltip.right .tooltip-arrow{
+    border-left-color: #2B2D44;
+    border-right-color: unset;
+}
+
+.form-group-default.required:after{
+    left: 12px;
+    right: auto;
+}
+
+@media only screen and (min-width: 768px){
+    form .row{
+        margin-right: -7px;
+        margin-left: -7px;
+    }
+
+    form .row [class*=col-]{
+        padding-right: 7px;
+        padding-left: 7px;
+    }
+
+}
+
+.coder-checkbox{
+    padding-right: 17px;
+    padding-left: 0;
+}
+
+.coder-checkbox input[type=checkbox]{
+    right: 0px;
+    left: auto;
+}
+
+.coder-checkbox .co-check-ui{
+    right: 0px;
+    left: auto;
+}
+
+.coder-checkbox label{
+    margin-right: 8px;
+    margin-left: 0;
+}
+
+.coder-radiobox{
+    padding-right: 17px;
+    padding-left: 0;
+}
+
+.coder-radiobox input[type=radio]{
+    right: 0px;
+    left: auto;
+}
+
+.coder-radiobox .co-radio-ui{
+    right: 0px;
+    left: auto;
+}
+
+.coder-radiobox label{
+    margin-right: 8px;
+    margin-left: 0;
+}
+
+.table tr td.td-b-l-none{
+    border-right: none !important;
+    border-left: none;
+}
+
+.table tr td.td-b-r-none{
+    border-left: none !important;
+    border-right: none;
+}
+
+@media only screen and (max-width: 760px), (min-device-width: 768px) and (max-device-width: 1024px){
+    table.table-ultra-responsive thead tr{
+        right: -9999px;
+        left: auto;
+    }
+
+    table.table-ultra-responsive td{
+        padding-right: 120px !important;
+        padding-left: 0;
+    }
+
+    table.table-ultra-responsive td:before{
+        right: 15px;
+        left: auto;
+        padding-left: 10px;
+        padding-right: 0;
+    }
+
+}
+
+table.dataTable thead .sorting:after, table.dataTable thead .sorting_asc:after, table.dataTable thead .sorting_desc:after, table.dataTable thead .sorting_asc_disabled:after, table.dataTable thead .sorting_desc_disabled:after{
+    left: 20px;
+    right: auto;
+}
+
+table.dataTable.table-condensed .sorting:after, table.dataTable.table-condensed .sorting_asc:after, table.dataTable.table-condensed .sorting_desc:after{
+    left: 20px;
+    right: auto;
+}
+
+.bootstrap-select.btn-group .dropdown-toggle .filter-option i{
+    margin-right: 1px;
+    margin-left: 0;
+}
+
+.form-group.form-group-default .bootstrap-select.form-control>.dropdown-toggle{
+    padding: 28px 13px 6px 13px ;
+}
+
+.form-group.form-group-default .bootstrap-select.btn-group.form-control .dropdown-toggle .caret{
+    left: 12px;
+    right: auto;
+}
+
+.info-list li{
+    padding-right: 120px;
+    padding-left: 0;
+}
+
+.info-list li .info-list-title{
+    right: 0px;
+    left: auto;
+}
+
+.info-list li .info-list-title:after{
+    left: 0px;
+    right: auto;
+}
+
+.info-list.title-space-md li{
+    padding-right: 160px;
+    padding-left: 0;
+}
+
+.info-list.title-space-lg li{
+    padding-right: 220px;
+    padding-left: 0;
+}
+
+.social-module li{
+    margin-left: 5px;
+    margin-right: 0;
+}
+
+.btn-file input[type=file]{
+    left: 0;
+    right: auto;
+    text-align: left;
+    background: none repeat scroll right  0 transparent;
+}
+
+.col-lg-6{
+    float: right;
+}
+.col-lg-7{
+    float: right;
+}
+textarea{
+    float: right;
+}

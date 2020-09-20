@@ -1,0 +1,61 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "This file is @generated automatically"
+    ],
+    "hash": "1e3bb26edf19dd17b9ab61ad20670fcc",
+    "content-hash": "d464e45a39f020af35493813e6b8bddd",
+    "packages": [
+        {
+            "name": "slydepay/slydepay-soap",
+            "version": "v1.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/DreamOval/slydepay-php-connector.git",
+                "reference": "e58929b1b265534e6439275043c4cafccdd034ff"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/DreamOval/slydepay-php-connector/zipball/e58929b1b265534e6439275043c4cafccdd034ff",
+                "reference": "e58929b1b265534e6439275043c4cafccdd034ff",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.6"
+            },
+            "require-dev": {
+                "kahlan/kahlan": "^3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Slydepay\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Andrew Smith",
+                    "email": "a.smith@silentworks.co.uk"
+                },
+                {
+                    "name": "Joseph Djomeda",
+                    "email": "joseph@dreamoval.com"
+                }
+            ],
+            "time": "2017-05-24 11:14:23"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": [],
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": []
+}
