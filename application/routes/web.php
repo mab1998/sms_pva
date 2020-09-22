@@ -13,7 +13,7 @@
 //======================================================================
 // Client Login
 //======================================================================
-Route::get('/', 'AuthController@HomePage');
+// Route::get('/', 'AuthController@HomePage');
 
 Route::get('/login', 'AuthController@clientLogin');
 Route::post('client/get-login', 'AuthController@clientGetLogin');
