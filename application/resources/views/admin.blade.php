@@ -391,12 +391,12 @@
 
 
             {{--Setting--}}
-            <!-- <li class="has-sub @if(Request::path()== 'settings/general' OR Request::path()=='settings/localization' OR Request::path()=='settings/language-settings' OR Request::path()=='settings/language-settings-translate/'.view_id() OR Request::path()=='settings/language-settings-manage/'.view_id()  OR Request::path()=='settings/payment-gateways' OR Request::path()=='settings/payment-gateway-manage/'.view_id() OR Request::path()=='settings/background-jobs' OR Request::path()=='settings/purchase-code') sub-open init-sub-open @endif">
+            <li class="has-sub @if(Request::path()== 'settings/general' OR Request::path()=='settings/localization' OR Request::path()=='settings/language-settings' OR Request::path()=='settings/language-settings-translate/'.view_id() OR Request::path()=='settings/language-settings-manage/'.view_id()  OR Request::path()=='settings/payment-gateways' OR Request::path()=='settings/payment-gateway-manage/'.view_id() OR Request::path()=='settings/background-jobs' OR Request::path()=='settings/purchase-code') sub-open init-sub-open @endif">
                 <a href="#"><span class="menu-text">{{language_data('Settings')}}</span> <span
                             class="arrow"></span><span class="menu-thumb"><i class="fa fa-cogs"></i></span></a>
                 <ul class="sub">
 
-                    <li @if(Request::path()== 'settings/general') class="active" @endif><a
+                    <!-- <li @if(Request::path()== 'settings/general') class="active" @endif><a
                                 href={{url('settings/general')}}><span
                                     class="menu-text">{{language_data('System Settings')}}</span> <span
                                     class="menu-thumb"><i class="fa fa-cog"></i></span></a></li>
@@ -405,19 +405,19 @@
                     <li @if(Request::path()== 'settings/localization') class="active" @endif><a
                                 href={{url('settings/localization')}}><span
                                     class="menu-text">{{language_data('Localization')}}</span> <span class="menu-thumb"><i
-                                        class="fa fa-globe"></i></span></a></li>
+                                        class="fa fa-globe"></i></span></a></li> -->
 
 
-                    <li @if(Request::path()== 'settings/language-settings' OR Request::path()=='settings/language-settings-manage/'.view_id() OR Request::path()=='settings/language-settings-translate/'.view_id()) class="active" @endif>
+                    <!-- <li @if(Request::path()== 'settings/language-settings' OR Request::path()=='settings/language-settings-manage/'.view_id() OR Request::path()=='settings/language-settings-translate/'.view_id()) class="active" @endif>
                         <a href={{url('settings/language-settings')}}><span
                                     class="menu-text">{{language_data('Language Settings')}}</span> <span
-                                    class="menu-thumb"><i class="fa fa-language"></i></span></a></li>
+                                    class="menu-thumb"><i class="fa fa-language"></i></span></a></li> -->
 
                     <li @if(Request::path()=='settings/payment-gateways' OR Request::path()=='settings/payment-gateway-manage/'.view_id()) class="active" @endif>
                         <a href={{url('settings/payment-gateways')}}><span
                                     class="menu-text">{{language_data('Payment Gateways')}}</span> <span
                                     class="menu-thumb"><i class="fa fa-paypal"></i></span></a></li>
-
+<!-- 
                     <li @if(Request::path()=='settings/background-jobs') class="active" @endif><a
                                 href={{url('settings/background-jobs')}}><span
                                     class="menu-text">{{language_data('Background Jobs')}}</span> <span
@@ -428,10 +428,10 @@
                                     href={{url('settings/purchase-code')}}><span
                                         class="menu-text">{{language_data('Purchase Code')}}</span> <span
                                         class="menu-thumb"><i class="fa fa-key"></i></span></a></li>
-                    @endif
+                    @endif -->
 
                 </ul>
-            </li> -->
+            </li>
 
             {{--Update Application--}}
 <!-- 
