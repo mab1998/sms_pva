@@ -48,7 +48,7 @@
             <li @if(Request::path()== 'dashboard') class="active" @endif><a href="{{url('dashboard')}}"><span class="menu-text">{{language_data('Dashboard',Auth::guard('client')->user()->lan_id)}}</span> <span class="menu-thumb"><i class="fa fa-dashboard"></i></span></a></li>
 
 
-            @if(Auth::guard('client')->user()->reseller=='Yes')
+            <!-- @if(Auth::guard('client')->user()->reseller=='Yes')
             {{--Clients--}}
             <li class="has-sub @if(Request::path()== 'user/all' OR Request::path()=='user/add' OR Request::path()=='user/view/'.view_id() OR Request::path()=='user/export-n-import' OR Request::path()== 'users/groups') sub-open init-sub-open @endif">
                 <a href="#"><span class="menu-text">{{language_data('Clients',Auth::guard('client')->user()->lan_id)}}</span> <span class="arrow"></span><span class="menu-thumb"><i class="fa fa-user"></i></span></a>
@@ -66,7 +66,7 @@
                 </ul>
             </li>
 
-            @endif
+            @endif -->
 
             {{--Invoices--}}
             <li class="has-sub @if(Request::path()== 'user/invoices/all' OR Request::path()=='user/invoices/recurring' OR Request::path()=='user/invoices/pay-invoice' OR Request::path()=='user/invoices/view/'.view_id() OR Request::path()=='user/invoices/edit/'.view_id()) sub-open init-sub-open @endif">
@@ -82,9 +82,9 @@
 
             <!-- <li @if(Request::path()== 'user/coverage' OR Request::path()== 'user/sms/view-operator/'.view_id()) class="active" @endif><a href="{{url('user/coverage')}}"><span class="menu-text">{{language_data('Coverage',Auth::guard('client')->user()->lan_id)}} / {{language_data('Routing',Auth::guard('client')->user()->lan_id)}}</span> <span class="menu-thumb"><i class="fa fa-wifi"></i></span></a></li> -->
 
-            <li @if(Request::path()== 'user/account') class="active" @endif><a href="{{url('user/account')}}"><span class="menu-text">Account</span> <span class="menu-thumb"><i class="fa fa-user"></i></span></a></li>
-            <li @if(Request::path()== 'user/domain') class="active" @endif><a href="{{url('user/domain')}}"><span class="menu-text">Domain</span> <span class="menu-thumb"><i class="fa fa-globe"></i></span></a></li>
-            <li @if(Request::path()== 'user/payments') class="active" @endif><a href="{{url('user/payments')}}"><span class="menu-text">Payments</span> <span class="menu-thumb"><i class="fa fa-money"></i></span></a></li>
+            <!-- <li @if(Request::path()== 'user/account') class="active" @endif><a href="{{url('user/account')}}"><span class="menu-text">Account</span> <span class="menu-thumb"><i class="fa fa-user"></i></span></a></li>
+            <li @if(Request::path()== 'user/domain') class="active" @endif><a href="{{url('user/domain')}}"><span class="menu-text">Domain</span> <span class="menu-thumb"><i class="fa fa-globe"></i></span></a></li> -->
+            <!-- <li @if(Request::path()== 'user/payments') class="active" @endif><a href="{{url('user/payments')}}"><span class="menu-text">Payments</span> <span class="menu-thumb"><i class="fa fa-money"></i></span></a></li> -->
 
 
             {{--Version 2.0--}}
@@ -109,10 +109,10 @@
                 <a href="#"><span class="menu-text">{{language_data('Recharge',Auth::guard('client')->user()->lan_id)}}</span> <span class="arrow"></span><span class="menu-thumb"><i class="fa fa-shopping-cart"></i></span></a>
                 <ul class="sub">
 
-                    <!-- <li @if(Request::path()== 'user/sms/purchase-sms-plan' OR Request::path()== 'user/sms/post-purchase-sms-plan' OR Request::path()=='user/sms/sms-plan-feature/'.view_id()) class="active" @endif><a href={{url('user/sms/purchase-sms-plan')}}><span class="menu-text">{{language_data('Purchase SMS Plan',Auth::guard('client')->user()->lan_id)}}</span> <span class="menu-thumb"><i class="fa fa-credit-card"></i></span></a></li> -->
-                    <li @if(Request::path()== 'user/hosting/purchase-vps-plan' OR Request::path()== 'user/hosting/post-purchase-vps-plan' OR Request::path()=='user/hosting/vps-plan-feature/'.view_id()) class="active" @endif><a href={{url('user/hosting/purchase-vps-plan')}}><span class="menu-text">{{language_data('Purchase VPS Plan',Auth::guard('client')->user()->lan_id)}}</span> <span class="menu-thumb"><i class="fa fa-credit-card"></i></span></a></li>
+                    <li @if(Request::path()== 'user/sms/purchase-sms-plan' OR Request::path()== 'user/sms/post-purchase-sms-plan' OR Request::path()=='user/sms/sms-plan-feature/'.view_id()) class="active" @endif><a href={{url('user/sms/purchase-sms-plan')}}><span class="menu-text">Purchase SMS Plan</span> <span class="menu-thumb"><i class="fa fa-credit-card"></i></span></a></li>
+                    <!-- <li @if(Request::path()== 'user/hosting/purchase-vps-plan' OR Request::path()== 'user/hosting/post-purchase-vps-plan' OR Request::path()=='user/hosting/vps-plan-feature/'.view_id()) class="active" @endif><a href={{url('user/hosting/purchase-vps-plan')}}><span class="menu-text">{{language_data('Purchase VPS Plan',Auth::guard('client')->user()->lan_id)}}</span> <span class="menu-thumb"><i class="fa fa-credit-card"></i></span></a></li>
                     <li @if(Request::path()== 'user/hosting/purchase-vpn-plan' OR Request::path()== 'user/hosting/post-purchase-vpn-plan' OR Request::path()=='user/hosting/vpn-plan-feature/'.view_id()) class="active" @endif><a href={{url('user/hosting/purchase-vpn-plan')}}><span class="menu-text">Purchase VPN Plan</span> <span class="menu-thumb"><i class="fa fa-credit-card"></i></span></a></li>
-                    <li @if(Request::path()== 'user/hosting/purchase-proxies-plan'  OR Request::path()== 'user/hosting/post-purchase-proxies-plan' OR Request::path()=='user/hosting/proxies-plan-feature/'.view_id()) class="active" @endif><a href={{url('user/hosting/purchase-proxies-plan')}}><span class="menu-text">Purchase Proxies Plan</span> <span class="menu-thumb"><i class="fa fa-credit-card"></i></span></a></li>
+                    <li @if(Request::path()== 'user/hosting/purchase-proxies-plan'  OR Request::path()== 'user/hosting/post-purchase-proxies-plan' OR Request::path()=='user/hosting/proxies-plan-feature/'.view_id()) class="active" @endif><a href={{url('user/hosting/purchase-proxies-plan')}}><span class="menu-text">Purchase Proxies Plan</span> <span class="menu-thumb"><i class="fa fa-credit-card"></i></span></a></li> -->
 
                     <!-- <li @if(Request::path()== 'user/sms/buy-unit') class="active" @endif><a href={{url('user/sms/buy-unit')}}><span class="menu-text">{{language_data('Buy Unit',Auth::guard('client')->user()->lan_id)}}</span> <span class="menu-thumb"><i class="fa fa-shopping-cart"></i></span></a></li> -->
 
@@ -192,7 +192,7 @@
  -->
 
             {{--Support Ticket--}}
-            <li class="has-sub @if(Request::path()== 'user/tickets/all' OR Request::path()=='user/tickets/create-new' OR Request::path()=='user/tickets/view-ticket/'.view_id()) sub-open init-sub-open @endif">
+            <!-- <li class="has-sub @if(Request::path()== 'user/tickets/all' OR Request::path()=='user/tickets/create-new' OR Request::path()=='user/tickets/view-ticket/'.view_id()) sub-open init-sub-open @endif">
                 <a href="#"><span class="menu-text">{{language_data('Support Tickets',Auth::guard('client')->user()->lan_id)}}</span> <span class="arrow"></span><span class="menu-thumb"><i class="fa fa-envelope"></i></span></a>
                 <ul class="sub">
                     <li @if(Request::path()== 'user/tickets/all'  OR Request::path()=='user/tickets/view-ticket/'.view_id()) class="active" @endif><a href={{url('user/tickets/all')}}><span class="menu-text">{{language_data('All',Auth::guard('client')->user()->lan_id)}} {{language_data('Support Tickets',Auth::guard('client')->user()->lan_id)}}</span> <span class="menu-thumb"><i class="fa fa-list"></i></span></a></li>
@@ -200,7 +200,7 @@
                     <li @if(Request::path()== 'user/tickets/create-new') class="active" @endif><a href={{url('user/tickets/create-new')}}><span class="menu-text">{{language_data('Create New Ticket',Auth::guard('client')->user()->lan_id)}}</span> <span class="menu-thumb"><i class="fa fa-plus"></i></span></a></li>
 
                 </ul>
-            </li>
+            </li> -->
 
 
             {{--Logout--}}

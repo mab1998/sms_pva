@@ -770,22 +770,22 @@ class UserSMSController extends Controller
     {
         $sms_plan = SMSPricePlan::where('status', 'Active')->find($id);
 
-        // if ($sms_plan) {
-        //     $plan_feature = SMSPlanFeature::where('pid', $id)->get();
-        //     $payment_gateways = PaymentGateways::where('status', 'Active')->get();
-        //     return view('client.sms-plan-feature', compact('sms_plan', 'plan_feature', 'payment_gateways'));
-        // } else {
-        //     return redirect('user/sms/purchase-sms-plan')->with([
-        //         'message' => language_data('SMS plan not found', Auth::guard('client')->user()->lan_id),
-        //         'message_important' => true
-        //     ]);
-        // }
-        $plan_feature = SMSPlanFeature::where('pid', $id)->get();
-        $payment_gateways = PaymentGateways::where('status', 'Active')->get();
-        $self = 'add-new-invoice';
-        $clients = Client::where('status', 'Active')->get();
-        // $cl=Auth::guard('client')->user();
-        return view('add-new-invoice', compact('sms_plan', 'plan_feature', 'payment_gateways','id'));
+        if ($sms_plan) {
+            $plan_feature = SMSPlanFeature::where('pid', $id)->get();
+            $payment_gateways = PaymentGateways::where('status', 'Active')->get();
+            return view('client.sms-plan-feature', compact('sms_plan', 'plan_feature', 'payment_gateways'));
+        } else {
+            return redirect('user/sms/purchase-sms-plan')->with([
+                'message' => language_data('SMS plan not found', Auth::guard('client')->user()->lan_id),
+                'message_important' => true
+            ]);
+        }
+        // $plan_feature = SMSPlanFeature::where('pid', $id)->get();
+        // $payment_gateways = PaymentGateways::where('status', 'Active')->get();
+        // $self = 'add-new-invoice';
+        // $clients = Client::where('status', 'Active')->get();
+        // // $cl=Auth::guard('client')->user();
+        // return view('add-new-invoice', compact('sms_plan', 'plan_feature', 'payment_gateways','id'));
 
 
     }

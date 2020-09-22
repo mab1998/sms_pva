@@ -13,9 +13,9 @@
 //======================================================================
 // Client Login
 //======================================================================
-// Route::get('/', 'AuthController@HomePage');
+Route::get('/', 'AuthController@HomePage');
 
-// Route::get('/login', 'AuthController@clientLogin');
+Route::get('/login', 'AuthController@clientLogin');
 Route::post('client/get-login', 'AuthController@clientGetLogin');
 Route::get('signup', 'AuthController@clientSignUp');
 Route::post('user/post-registration', 'AuthController@postUserRegistration');

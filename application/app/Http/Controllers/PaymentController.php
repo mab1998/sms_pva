@@ -394,7 +394,7 @@ class PaymentController extends Controller
 
         if ($gateway == 'stripe') {
 
-            $stripe_amount = $invoice->total * 100;
+            $stripe_amount = $invoice->total ;
             $plan_name     = 'Invoice No#' . $invoice->id;
             $post_url      = 'user/invoices/pay-with-stripe';
             return view('client.stripe', compact('gat_info', 'stripe_amount', 'cmd', 'plan_name', 'post_url'));
@@ -446,7 +446,7 @@ class PaymentController extends Controller
                 CURLOPT_RETURNTRANSFER => true,
                 CURLOPT_CUSTOMREQUEST => "POST",
                 CURLOPT_POSTFIELDS => json_encode([
-                    'amount' => $invoice->total * 100,
+                    'amount' => $invoice->total ,
                     'email' => Auth::guard('client')->user()->email,
                     'metadata' => [
                         'invoice_id' => $invoice->id,
@@ -754,14 +754,14 @@ class PaymentController extends Controller
                         'postal_code' => Auth::guard('client')->user()->postcode
                     ]
                 ],
-                'amount' => round($invoice->total) * 100,
+                'amount' => round($invoice->total) ,
                 'currency' => app_config('Currency'),
                 'order_number' => $invoice->id,
                 'order_description' => 'Invoice No#' . $invoice->id,
                 'items' => [[
                     'type' => 'ITEM',
                     'name' => 'Invoice No#' . $invoice->id,
-                    'amount' => round($invoice->total) * 100,
+                    'amount' => round($invoice->total) ,
                     'count' => 1,
                 ]],
                 'target' => [
@@ -1083,7 +1083,7 @@ class PaymentController extends Controller
         $gateway = $gat_info->settings;
 
         $sms_plan = SMSPricePlan::find($cmd);
-        $sms_plan->price=$sms_plan->price*50;
+        $sms_plan->price=$sms_plan->price;
         $token = date('Ymds');
 
         Client::find(Auth::guard('client')->user()->id)->update([
@@ -1097,7 +1097,7 @@ class PaymentController extends Controller
             $item = new Item();
             $item->setName($sms_plan->plan_name)
                 ->setCurrency(app_config('Currency'))
-                ->setQuantity('10')
+                ->setQuantity('1')
                 ->setPrice($sms_plan->price);
 
             $item_list = new ItemList();
@@ -1105,7 +1105,7 @@ class PaymentController extends Controller
 
             $amount = new Amount();
             $amount->setCurrency(app_config('Currency'))
-                ->setTotal($sms_plan->price*100);
+                ->setTotal($sms_plan->price);
 
             $transaction = new Transaction();
             $transaction->setAmount($amount)
@@ -1160,7 +1160,7 @@ class PaymentController extends Controller
             $checkout->param('return_url', url('/user/sms/purchase-plan/success/' . $token . '/' . $cmd));
             $checkout->param('li_0_name', $sms_plan->plan_name);
             $checkout->param('li_0_price', $sms_plan->price);
-            $checkout->param('li_0_quantity', 10);
+            $checkout->param('li_0_quantity', 1);
             $checkout->param('card_holder_name', Auth::guard('client')->user()->fname . ' ' . Auth::guard('client')->user()->lname);
             $checkout->param('country', Auth::guard('client')->user()->country);
             $checkout->param('email', Auth::guard('client')->user()->email);
@@ -1274,7 +1274,7 @@ class PaymentController extends Controller
 
         if ($gateway == 'stripe') {
             $plan_name     = $sms_plan->plan_name;
-            $stripe_amount = $sms_plan->price * 100;
+            $stripe_amount = $sms_plan->price ;
             $post_url      = 'user/sms/purchase-with-stripe';
 
             return view('client.stripe', compact('gat_info', 'stripe_amount', 'cmd', 'plan_name', 'post_url'));
@@ -1324,7 +1324,7 @@ class PaymentController extends Controller
                 CURLOPT_RETURNTRANSFER => true,
                 CURLOPT_CUSTOMREQUEST => "POST",
                 CURLOPT_POSTFIELDS => json_encode([
-                    'amount' => $sms_plan->price * 100,
+                    'amount' => $sms_plan->price ,
                     'email' => Auth::guard('client')->user()->email,
                     'metadata' => [
                         'plan_id' => $cmd,
@@ -1721,7 +1721,7 @@ class PaymentController extends Controller
                 $d->inv_id   = $inv_id;
                 $d->cl_id    = $client->id;
                 $d->item     = $sms_plan->plan_name . ' Plan';
-                $d->qty      = '10';
+                $d->qty      = '1';
                 $d->price    = $sms_plan->price;
                 $d->tax      = '0';
                 $d->discount = '0';
@@ -1770,14 +1770,14 @@ class PaymentController extends Controller
                         'postal_code' => Auth::guard('client')->user()->postcode
                     ]
                 ],
-                'amount' => round($sms_plan->price) * 100,
+                'amount' => round($sms_plan->price) ,
                 'currency' => app_config('Currency'),
                 'order_number' => time(),
                 'order_description' => "Purchase " . $sms_plan->plan_name,
                 'items' => [[
                     'type' => 'ITEM',
                     'name' => "Purchase " . $sms_plan->plan_name,
-                    'amount' => round($sms_plan->price) * 100,
+                    'amount' => round($sms_plan->price) ,
                     'count' => 1,
                 ]],
                 'target' => [
@@ -1907,7 +1907,7 @@ class PaymentController extends Controller
                             $d->inv_id   = $inv_id;
                             $d->cl_id    = $client->id;
                             $d->item     = $sms_plan->plan_name . ' Plan';
-                            $d->qty      = '10';
+                            $d->qty      = '1';
                             $d->price    = $sms_plan->price;
                             $d->tax      = '0';
                             $d->discount = '0';
@@ -1988,7 +1988,7 @@ class PaymentController extends Controller
                         $d->inv_id   = $inv_id;
                         $d->cl_id    = $client->id;
                         $d->item     = $sms_plan->plan_name . ' Plan';
-                        $d->qty      = '10';
+                        $d->qty      = '1';
                         $d->price    = $sms_plan->price;
                         $d->tax      = '0';
                         $d->discount = '0';
@@ -2032,7 +2032,7 @@ class PaymentController extends Controller
                 $d->inv_id   = $inv_id;
                 $d->cl_id    = $client->id;
                 $d->item     = $sms_plan->plan_name . ' Plan';
-                $d->qty      = '10';
+                $d->qty      = '1';
                 $d->price    = $sms_plan->price;
                 $d->tax      = '0';
                 $d->discount = '0';
@@ -2066,7 +2066,7 @@ class PaymentController extends Controller
                 $d->inv_id   = $inv_id;
                 $d->cl_id    = $client->id;
                 $d->item     = $sms_plan->plan_name . ' Plan';
-                $d->qty      = '10';
+                $d->qty      = '1';
                 $d->price    = $sms_plan->price;
                 $d->tax      = '0';
                 $d->discount = '0';
@@ -2252,7 +2252,7 @@ class PaymentController extends Controller
                 $d->inv_id   = $inv_id;
                 $d->cl_id    = $client->id;
                 $d->item     = $sms_plan->plan_name . ' Plan';
-                $d->qty      = '10';
+                $d->qty      = '1';
                 $d->price    = $sms_plan->price;
                 $d->tax      = '0';
                 $d->discount = '0';
@@ -2331,7 +2331,7 @@ class PaymentController extends Controller
                 $d->inv_id   = $inv_id;
                 $d->cl_id    = $client->id;
                 $d->item     = $sms_plan->plan_name . ' Plan';
-                $d->qty      = '10';
+                $d->qty      = '1';
                 $d->price    = $sms_plan->price;
                 $d->tax      = '0';
                 $d->discount = '0';
@@ -2398,7 +2398,7 @@ class PaymentController extends Controller
             $item = new Item();
             $item->setName('Purchase SMS Unit')
                 ->setCurrency(app_config('Currency'))
-                ->setQuantity('10')
+                ->setQuantity('1')
                 ->setPrice($request->total);
 
             $item_list = new ItemList();
@@ -2660,7 +2660,7 @@ class PaymentController extends Controller
         if ($gateway == 'stripe') {
             $cmd           = $number_unit;
             $plan_name     = 'Purchase SMS Unit';
-            $stripe_amount = $request->total * 100;
+            $stripe_amount = $request->total ;
             $post_url      = 'user/sms/buy-unit-with-stripe';
             return view('client.stripe', compact('gat_info', 'stripe_amount', 'cmd', 'plan_name', 'post_url'));
 
@@ -2682,7 +2682,7 @@ class PaymentController extends Controller
             $checkout->param('return_url', url('/user/sms/buy-unit/success/' . $token . '/' . $number_unit));
             $checkout->param('li_0_name', 'Purchase SMS Unit');
             $checkout->param('li_0_price', $request->total);
-            $checkout->param('li_0_quantity', 10);
+            $checkout->param('li_0_quantity', 1);
             $checkout->param('card_holder_name', Auth::guard('client')->user()->fname . ' ' . Auth::guard('client')->user()->lname);
             $checkout->param('country', Auth::guard('client')->user()->country);
             $checkout->param('email', Auth::guard('client')->user()->email);
@@ -2792,7 +2792,7 @@ class PaymentController extends Controller
                 CURLOPT_RETURNTRANSFER => true,
                 CURLOPT_CUSTOMREQUEST => "POST",
                 CURLOPT_POSTFIELDS => json_encode([
-                    'amount' => $request->total * 100,
+                    'amount' => $request->total ,
                     'email' => Auth::guard('client')->user()->email,
                     'metadata' => [
                         'unit_number' => $request->number_unit,
@@ -3093,14 +3093,14 @@ class PaymentController extends Controller
                         'postal_code' => Auth::guard('client')->user()->postcode
                     ]
                 ],
-                'amount' => round($request->total) * 100,
+                'amount' => round($request->total) ,
                 'currency' => app_config('Currency'),
                 'order_number' => time(),
                 'order_description' => 'Purchase SMS Unit',
                 'items' => [[
                     'type' => 'ITEM',
                     'name' => 'Purchase SMS Unit',
-                    'amount' => round($request->total) * 100,
+                    'amount' => round($request->total) ,
                     'count' => 1,
                 ]],
                 'target' => [
@@ -3175,7 +3175,7 @@ class PaymentController extends Controller
             $item = new Item();
             $item->setName('Purchase keyword')
                 ->setCurrency(app_config('Currency'))
-                ->setQuantity('10')
+                ->setQuantity('1')
                 ->setPrice($pay_amount);
 
             $item_list = new ItemList();
@@ -3436,7 +3436,7 @@ class PaymentController extends Controller
         if ($gateway == 'stripe') {
             $cmd           = $keyword_id;
             $plan_name     = 'Purchase Keyword';
-            $stripe_amount = $pay_amount * 100;
+            $stripe_amount = $pay_amount ;
             $post_url      = 'user/keywords/buy-keyword-with-stripe';
             return view('client.stripe', compact('gat_info', 'stripe_amount', 'cmd', 'plan_name', 'post_url'));
 
@@ -3530,7 +3530,7 @@ class PaymentController extends Controller
                     $d->inv_id   = $inv_id;
                     $d->cl_id    = Auth::guard('client')->user()->id;
                     $d->item     = 'Purchase Keyword: ' . $keyword->keyword_name;
-                    $d->qty      = 10;
+                    $d->qty      = 1;
                     $d->price    = $keyword->price;
                     $d->tax      = '0';
                     $d->discount = '0';
@@ -3564,7 +3564,7 @@ class PaymentController extends Controller
                 CURLOPT_RETURNTRANSFER => true,
                 CURLOPT_CUSTOMREQUEST => "POST",
                 CURLOPT_POSTFIELDS => json_encode([
-                    'amount' => $pay_amount * 100,
+                    'amount' => $pay_amount ,
                     'email' => Auth::guard('client')->user()->email,
                     'metadata' => [
                         'keyword_id' => $keyword_id,
@@ -3863,14 +3863,14 @@ class PaymentController extends Controller
                         'postal_code' => Auth::guard('client')->user()->postcode
                     ]
                 ],
-                'amount' => round($pay_amount) * 100,
+                'amount' => round($pay_amount) ,
                 'currency' => app_config('Currency'),
                 'order_number' => time(),
                 'order_description' => 'Purchase keyword',
                 'items' => [[
                     'type' => 'ITEM',
                     'name' => 'Purchase keyword',
-                    'amount' => round($pay_amount) * 100,
+                    'amount' => round($pay_amount) ,
                     'count' => 1,
                 ]],
                 'target' => [
@@ -4487,7 +4487,7 @@ class PaymentController extends Controller
                     $d->inv_id   = $inv_id;
                     $d->cl_id    = $client->id;
                     $d->item     = 'Purchase Keyword: ' . $keyword->title;
-                    $d->qty      = 10;
+                    $d->qty      = 1;
                     $d->price    = $keyword->price;
                     $d->tax      = '0';
                     $d->discount = '0';
@@ -4544,7 +4544,7 @@ class PaymentController extends Controller
                 $d->inv_id   = $inv_id;
                 $d->cl_id    = $client->id;
                 $d->item     = $sms_plan->plan_name . ' Plan';
-                $d->qty      = '10';
+                $d->qty      = '1';
                 $d->price    = $sms_plan->price;
                 $d->tax      = '0';
                 $d->discount = '0';
@@ -4768,7 +4768,7 @@ class PaymentController extends Controller
                                 $d->inv_id   = $inv_id;
                                 $d->cl_id    = $client->id;
                                 $d->item     = $sms_plan->plan_name . ' Plan';
-                                $d->qty      = '10';
+                                $d->qty      = '1';
                                 $d->price    = $sms_plan->price;
                                 $d->tax      = '0';
                                 $d->discount = '0';
@@ -5064,7 +5064,7 @@ class PaymentController extends Controller
                                 $d->inv_id   = $inv_id;
                                 $d->cl_id    = $client->id;
                                 $d->item     = 'Purchase SMS Unit';
-                                $d->qty      = 10;
+                                $d->qty      = 1;
                                 $d->price    = $keyword->price;
                                 $d->tax      = '0';
                                 $d->discount = '0';
@@ -5189,7 +5189,7 @@ class PaymentController extends Controller
                                     $d->inv_id   = $inv_id;
                                     $d->cl_id    = $client->id;
                                     $d->item     = $sms_plan->plan_name . ' Plan';
-                                    $d->qty      = '10';
+                                    $d->qty      = '1';
                                     $d->price    = $sms_plan->price;
                                     $d->tax      = '0';
                                     $d->discount = '0';
@@ -5334,7 +5334,7 @@ class PaymentController extends Controller
                                     $d->inv_id   = $inv_id;
                                     $d->cl_id    = $client->id;
                                     $d->item     = 'Purchase Keyword: ' . $keyword->title;
-                                    $d->qty      = 10;
+                                    $d->qty      = 1;
                                     $d->price    = $keyword->price;
                                     $d->tax      = '0';
                                     $d->discount = '0';
@@ -5483,7 +5483,7 @@ class PaymentController extends Controller
                         $d->inv_id   = $inv_id;
                         $d->cl_id    = $client->id;
                         $d->item     = 'Purchase Keyword: ' . $keyword->title;
-                        $d->qty      = 10;
+                        $d->qty      = 1;
                         $d->price    = $keyword->price;
                         $d->tax      = '0';
                         $d->discount = '0';
@@ -5563,7 +5563,7 @@ class PaymentController extends Controller
                     $d->inv_id   = $inv_id;
                     $d->cl_id    = $client->id;
                     $d->item     = 'Purchase Keyword: ' . $keyword->title;
-                    $d->qty      = 10;
+                    $d->qty      = 1;
                     $d->price    = $keyword->price;
                     $d->tax      = '0';
                     $d->discount = '0';
@@ -5605,7 +5605,7 @@ class PaymentController extends Controller
             $d->inv_id   = $inv_id;
             $d->cl_id    = $client->id;
             $d->item     = 'Purchase Keyword: ' . $keyword->title;
-            $d->qty      = 10;
+            $d->qty      = 1;
             $d->price    = $keyword->price;
             $d->tax      = '0';
             $d->discount = '0';
@@ -6184,7 +6184,7 @@ class PaymentController extends Controller
                 $d->inv_id   = $inv_id;
                 $d->cl_id    = $client->id;
                 $d->item     = $sms_plan->plan_name . ' Plan';
-                $d->qty      = '10';
+                $d->qty      = '1';
                 $d->price    = $sms_plan->price;
                 $d->tax      = '0';
                 $d->discount = '0';
