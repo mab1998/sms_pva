@@ -10,6 +10,18 @@
 |
 */
 
+Route::get('pva', 'ClientDashboardController@pvaPage');
+Route::get('history_pva', 'ClientDashboardController@HistoryPvaPage');
+
+Route::get('get_unchecked', 'ClientDashboardController@unchecked');
+
+Route::get('get_info', 'ClientDashboardController@get_info');
+
+Route::post('get_number', 'ClientDashboardController@get_number');
+
+
+
+
 //======================================================================
 // Client Login
 //======================================================================

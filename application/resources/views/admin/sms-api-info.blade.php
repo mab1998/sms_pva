@@ -15,7 +15,7 @@
 
     <section class="wrapper-bottom-sec">
         <div class="p-30">
-            <h2 class="page-title">{{language_data('SMS API Info')}}</h2>
+            <h2 class="page-title">SMS PVA API Info</h2>
         </div>
         <div class="p-30 p-t-none p-b-none">
             @include('notification.notify')
@@ -32,24 +32,24 @@
                                 <div class="form-group">
                                     <label>{{language_data('SMS Gateway')}}</label>
                                     <select class="selectpicker form-control" name="sms_gateway"  data-live-search="true">
-                                        @foreach($gateways as $sg)
-                                            <option value="{{$sg->id}}" @if(app_config('sms_api_gateway')==$sg->id) selected @endif>{{$sg->name}}</option>
-                                        @endforeach
+                                        {{-- @foreach($gateways as $sg) --}}
+                                            <option value="sms_pva"  selected >SMS PVA</option>
+                                        {{-- @endforeach --}}
                                     </select>
                                 </div>
 
 
-                                <div class="form-group">
+                                {{-- <div class="form-group">
                                     <label>{{language_data('SMS API URL')}}</label>
                                     <input type="text" class="form-control" value="{{url('/')}}" name="api_url">
-                                </div>
+                                </div> --}}
 
                                 <div class="form-group">
                                     <label>{{language_data('SMS Api key')}}</label>
-                                    <div class="input-group">
-                                        <input class="form-control" type="text" id="api-key" name="api_key" value="{{app_config('api_key')}}">
-                                        <span class="input-group-addon btn btn-success getNewPass"><i class="fa fa-refresh"></i> {{language_data('Generate New')}}</span>
-                                    </div>
+                                    {{-- <div class="input-group"> --}}
+                                        <input class="form-control" type="text" id="api-key" name="api_key" value="{{$api_key}}">
+                                        {{-- <span class="input-group-addon btn btn-success getNewPass"><i class="fa fa-refresh"></i> {{language_data('Generate New')}}</span> --}}
+                                    {{-- </div> --}}
                                 </div>
 
                                 <button type="submit" class="btn btn-success btn-sm pull-right"><i class="fa fa-save"></i> {{language_data('Update')}} </button>
@@ -57,7 +57,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-7">
+                {{-- <div class="col-lg-7">
                     <div class="panel">
                         <div class="panel-heading">
                             <h3 class="panel-title">{{language_data('SMS API Details')}}</h3>
@@ -107,7 +107,7 @@
 
                         </div>
                     </div>
-                </div>
+                </div> --}}
 
             </div>
 

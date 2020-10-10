@@ -9,6 +9,26 @@ use App\Invoices;
 use App\LanguageData;
 use App\Language;
 use App\SMSGateways;
+use App\Country;
+use App\Service;
+
+function country($country_code)
+{
+    $conf = Country::where('country_code', '=', $country_code)->first();
+    return $conf->country;
+}
+function country_code_number($country_code)
+{
+    $conf = Country::where('country_code', '=', $country_code)->first();
+    return $conf->country_code_number;
+}
+
+function service($service_code)
+{
+    $conf = Service::where('service_code', '=', $service_code)->first();
+    return $conf->service;
+}
+
 
 function app_config($value = '')
 {

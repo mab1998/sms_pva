@@ -2,6 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Country;
+use App\Service;
+use App\PVAHistory;
+use App\Api;
+
 
 use App\Campaigns;
 use App\CampaignSubscriptionList;
@@ -16,6 +21,9 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Input;
 
+// use GuzzleHttp\Client;
+// use GuzzleHttp\Promise;
+
 class ClientDashboardController extends Controller
 {
 
@@ -23,6 +31,319 @@ class ClientDashboardController extends Controller
     {
         $this->middleware('client');
     }
+	
+	    public function pvaPage()
+    {
+        $countries=Country::all();
+        $services=Service::all();
+
+        // return $services;
+
+        $history=PVAHistory::all()->where('username', Auth::guard('client')->user()->username)->where('status', '==','not_checked');
+
+        // return $history;
+
+        // return $country;
+		return view('client.pva.pva-page',compact('countries','services','history'));
+    }
+    public function HistoryPvaPage()
+    {
+
+
+        $history=PVAHistory::orderBy('created_at', 'ASC')->where('username', Auth::guard('client')->user()->username)->get();
+        // return $history;
+
+        // return $history;
+
+        // return $country;
+		return view('client.pva.pva-history',compact('history'));
+    }
+    
+
+    public function unchecked()
+    {
+
+
+
+        // $client = new Client(['base_uri' => 'https://stackoverflow.com/questions/38224886/laravel-blade-pass-javascript-variable-in-php']);
+
+        
+        // $responses = Promise\unwrap($promises);
+
+        // return $client;
+
+        $api_key=Api::find("1")->api_key;
+        // return $api;
+
+        $history=PVAHistory::all()->where('username', Auth::guard('client')->user()->username)->where('status', '==','not_checked');
+        // return $history;
+        $client=Client::find(Auth::guard('client')->user()->id);
+
+
+
+        foreach ($history as $key => $value) {
+            $country=$value->country;
+            $service=$value->service;
+            $phone_number=$value->Phone_Number;
+            $id_pva=$value->id_pva;
+            $price=$value->price ;
+
+            // $price=(float)$price+0.1;
+      
+            // $price=(int)($price * 10);
+            // return $price;
+
+            $endpoint = 'http://smspva.com/priemnik.php';
+            $params = array('metod' => 'get_sms','country' => $country,'service' => $service,'id'=>$id_pva,'apikey' => $api_key);
+            $url = $endpoint . '?' . http_build_query($params);
+            // return $url;
+
+
+            $curl = curl_init();
+
+            curl_setopt_array($curl, array(
+            CURLOPT_URL => $url,
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => "",
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 0,
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => "GET",
+            ));
+
+            $response = curl_exec($curl);
+
+            curl_close($curl);
+            try{
+                $response=json_decode($response);
+                $rr=$response;
+                // echo inverse(0) . "\n";
+            }catch (\Exception $e) {
+                $client->sms_limit=$client->sms_limit+$price;
+                $client->save();
+                // return $client->sms_limit;
+                
+
+
+                $history[$key]->status="Failed";
+                
+                $hs=PVAHistory::find($history[$key]->id);
+                $hs->status="Failed";
+                // return $history[$key];
+                $hs->save();
+
+                // return "null";
+            }
+            // return $history;
+            
+
+            if ($response->{'response'}==2){
+
+                // return "rrrrrr";
+                  try {
+                        $response->{'sms'};
+                        // echo inverse(0) . "\n";
+                    } catch (\Exception $e) {
+                        $client->sms_limit=$client->sms_limit+$price;
+                        $client->save();
+                        // return $client->sms_limit;
+                        
+
+
+                        $history[$key]->status="Failed";
+
+                        $hs=PVAHistory::find($history[$key]->id);
+                        $hs->status="Failed";
+                        // return $history[$key];
+                        $hs->save();
+
+                        // return "null";
+                    }
+            }
+            elseif($response->{'response'}==1 and $response->{'sms'}!='null'){
+                // $response->{'sms'}
+                $history[$key]->activation_code= $response->{'sms'};
+                $history[$key]->status= "Successful";
+                $hs=PVAHistory::find($history[$key]->id);
+                $hs->activation_code=$response->{'sms'};
+                $hs->status="Successful";
+                $hs->save();
+                // return $history;
+            }
+            elseif($response->{'response'}==3){
+                $client->sms_limit=$client->sms_limit+$price;
+                $client->save();
+                // return $client->sms_limit;
+                
+
+
+                $history[$key]->status="Failed";
+
+                $hs=PVAHistory::find($history[$key]->id);
+                $hs->status="Failed";
+                // return $history[$key];
+                $hs->save();
+
+                // return 'Error occured';
+            }
+            
+
+            // return $response->{'response'};
+            
+            // return $value->Phone_Number;
+            # code...
+        }
+
+        // $history=PVAHistory::all()->where('username', Auth::guard('client')->user()->username)->where('status', '!=','Failed');
+
+        return $history;
+
+		// return view('client.pva.pva-page',compact('countries','services','history'));
+    }
+    public function check_price($country,$service,$api_key){
+            
+        $endpoint = 'http://smspva.com/priemnik.php';
+        $params = array('metod' => 'get_service_price','country' => $country,'service' => $service,'apikey' => $api_key);
+        $url = $endpoint . '?' . http_build_query($params);
+
+        $curl = curl_init();
+
+        curl_setopt_array($curl, array(
+        CURLOPT_URL => $url,
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_ENCODING => "",
+        CURLOPT_MAXREDIRS => 10,
+        CURLOPT_TIMEOUT => 0,
+        CURLOPT_FOLLOWLOCATION => true,
+        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+        CURLOPT_CUSTOMREQUEST => "GET",
+        ));
+
+        $response = curl_exec($curl);
+
+        curl_close($curl);
+        $response=json_decode($response);
+
+        
+        if ($response->{'response'}=1){
+            $price=$response->{'price'};
+            $price=(float)$price+0.1;
+            // return $price;
+            $price=(int)($price*10);
+
+            
+
+            return $price;
+        }else{
+            
+            return "service not found";
+        }
+    }
+
+    public function get_info(Request $request)
+    {
+        $country=$request->country;
+        $service=$request->service;
+        $api_key=Api::find("1")->api_key;
+        
+
+        return $this->check_price($country,$service,$api_key);
+
+           }
+
+    public function get_number(Request $request)
+    {
+        // return $request->all();
+        $country=$request->input("country");
+        $service=$request->input("services");
+        $api_key=Api::find("1")->api_key;
+        
+        // return $country;;
+        $price=$this->check_price($country,$service,$api_key);
+
+
+        $client=Client::find(Auth::guard('client')->user()->id);
+        if ($price>$client->sms_limit){
+            return redirect('/pva')->with([
+                'message' => "Your Balance is insuffsant"
+            ]); 
+        }
+
+        if($price=='service not found'){
+            return 'service not found';
+        }
+
+        $endpoint = 'http://smspva.com/priemnik.php';
+        $params = array('metod' => 'get_number','country' => $country,'service' => $service,'apikey' => $api_key);
+        $url = $endpoint . '?' . http_build_query($params);
+
+        $curl = curl_init();
+
+        curl_setopt_array($curl, array(
+        CURLOPT_URL => $url,
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_ENCODING => "",
+        CURLOPT_MAXREDIRS => 10,
+        CURLOPT_TIMEOUT => 0,
+        CURLOPT_FOLLOWLOCATION => true,
+        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+        CURLOPT_CUSTOMREQUEST => "GET",
+        ));
+
+        $response = curl_exec($curl);
+
+        curl_close($curl);
+        $response=json_decode($response);
+        // return (string)((int)$response->{'response'}==1);
+
+        if ((int)$response->{'response'}==1){
+            // return $response->{'response'};
+            // $price=$response->{'price'};
+            // $price=(float)$price+0.1;
+            // return $price;
+            // $price=(int)($price*10);
+            
+
+            $client->sms_limit=$client->sms_limit-$price;
+            $client->save();
+
+            $pva_number               = new PVAHistory();
+            $pva_number->id_pva       =$response->{'id'};
+            $pva_number->country      =$country;
+            $pva_number->service    =$service;
+            $pva_number->price    =$price;
+            $pva_number->username    =Auth::guard('client')->user()->username;
+            $pva_number->Phone_Number    =(int)$response->{'number'};
+            $pva_number->save();
+
+            return redirect('/pva')->with([
+                'message' => "successfull geted number"
+            ]);
+
+        }else{
+            try {
+                $response->{'balance'};
+                return redirect('/pva')->with([
+                    'message' => "Service have insuffusante balance"
+                ]);
+                // echo inverse(5) . "\n";
+                // echo inverse(0) . "\n";
+            } catch (\Exception $e) {
+                return redirect('/pva')->with([
+                    'message' => "Service not founds"
+                ]);
+            }
+            
+
+        }
+
+
+
+
+
+    }
+
 
 
     //======================================================================

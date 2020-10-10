@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
     <meta charset="utf-8">
     <title>{{app_config('AppTitle')}}</title>
     <link rel="icon" type="image/x-icon"  href="<?php echo asset(app_config('AppFav')); ?>" />
@@ -25,6 +26,9 @@
     {!! Html::style("assets/css/style.css") !!}
     {!! Html::style("assets/css/admin.css") !!}
     {!! Html::style("assets/css/responsive.css") !!}
+      <script src="https://js.pusher.com/7.0/pusher.min.js"></script>
+
+
 
 
 </head>
@@ -115,6 +119,17 @@
                     <li @if(Request::path()== 'user/hosting/purchase-proxies-plan'  OR Request::path()== 'user/hosting/post-purchase-proxies-plan' OR Request::path()=='user/hosting/proxies-plan-feature/'.view_id()) class="active" @endif><a href={{url('user/hosting/purchase-proxies-plan')}}><span class="menu-text">Purchase Proxies Plan</span> <span class="menu-thumb"><i class="fa fa-credit-card"></i></span></a></li> -->
 
                     <!-- <li @if(Request::path()== 'user/sms/buy-unit') class="active" @endif><a href={{url('user/sms/buy-unit')}}><span class="menu-text">{{language_data('Buy Unit',Auth::guard('client')->user()->lan_id)}}</span> <span class="menu-thumb"><i class="fa fa-shopping-cart"></i></span></a></li> -->
+
+                </ul>
+            </li>
+
+            
+            <li class="has-sub @if(Request::path()== 'pva' OR  Request::path()== 'pva' ) sub-open init-sub-open @endif">
+                <a href="#"><span class="menu-text">PVA</span> <span class="arrow"></span><span class="menu-thumb"><i class="fa fa-shopping-cart"></i></span></a>
+                <ul class="sub">
+
+                    <li @if(Request::path()== 'pva' ) class="active" @endif><a href={{url('pva')}}><span class="menu-text">PVA</span> <span class="menu-thumb"><i class="fa fa-credit-card"></i></span></a></li>
+                    <li @if(Request::path()== 'history_pva' ) class="active" @endif><a href={{url('history_pva')}}><span class="menu-text">PVA History</span> <span class="menu-thumb"><i class="fa fa-credit-card"></i></span></a></li>
 
                 </ul>
             </li>
@@ -227,7 +242,7 @@
                 </ul>
             </li>
 
-            <li class="dropdown bar-notification @if(count(latest_five_tickets(Auth::guard('client')->user()->id))>0) active @endif">
+            {{-- <li class="dropdown bar-notification @if(count(latest_five_tickets(Auth::guard('client')->user()->id))>0) active @endif">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-envelope"></i></a>
                 <ul class="dropdown-menu arrow message-dropdown" role="menu">
                     <li class="title">{{language_data('Recent 5 Pending Tickets',Auth::guard('client')->user()->lan_id)}}</li>
@@ -242,7 +257,7 @@
 
                     <li class="footer"><a href="{{url('user/tickets/all')}}">{{language_data('See All Tickets',Auth::guard('client')->user()->lan_id)}}</a></li>
                 </ul>
-            </li>
+            </li> --}}
         </ul>
 
 
@@ -319,6 +334,9 @@
 {{--Global JavaScript End--}}
 
 <script>
+
+
+
     $.ajaxSetup({
         headers: {
             'X-CSRF-Token': $('input[name="_token"]').val()

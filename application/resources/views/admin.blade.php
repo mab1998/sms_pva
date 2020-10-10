@@ -330,7 +330,7 @@
             </li> -->
 
             {{--SMS API--}}
-            <!-- <li class="has-sub @if(Request::path()== 'sms-api/info' OR Request::path()== 'sms-api/sdk') sub-open init-sub-open @endif">
+             <li class="has-sub @if(Request::path()== 'sms-api/info' OR Request::path()== 'sms-api/sdk') sub-open init-sub-open @endif">
                 <a href="#"><span class="menu-text">{{language_data('SMS Api')}}</span> <span class="arrow"></span><span
                             class="menu-thumb"><i class="fa fa-plug"></i></span></a>
                 <ul class="sub">
@@ -339,12 +339,12 @@
                                 href={{url('sms-api/info')}}><span class="menu-text">{{language_data('SMS Api')}}</span>
                             <span class="menu-thumb"><i class="fa fa-cog"></i></span></a></li>
 
-                    <li @if(Request::path()== 'sms-api/sdk') class="active" @endif><a href={{url('sms-api/sdk')}}><span
+                    {{-- <li @if(Request::path()== 'sms-api/sdk') class="active" @endif><a href={{url('sms-api/sdk')}}><span
                                     class="menu-text">{{language_data('SMS Api')}} SDK</span> <span
-                                    class="menu-thumb"><i class="fa fa-download"></i></span></a></li>
+                                    class="menu-thumb"><i class="fa fa-download"></i></span></a></li> --}}
 
                 </ul>
-            </li> -->
+            </li> 
 
 
             {{--Support Ticket--}}
@@ -396,17 +396,16 @@
                             class="arrow"></span><span class="menu-thumb"><i class="fa fa-cogs"></i></span></a>
                 <ul class="sub">
 
-                    <!-- <li @if(Request::path()== 'settings/general') class="active" @endif><a
+                   <li @if(Request::path()== 'settings/general') class="active" @endif><a
                                 href={{url('settings/general')}}><span
                                     class="menu-text">{{language_data('System Settings')}}</span> <span
                                     class="menu-thumb"><i class="fa fa-cog"></i></span></a></li>
 
 
-                    <li @if(Request::path()== 'settings/localization') class="active" @endif><a
+                    {{-- <li @if(Request::path()== 'settings/localization') class="active" @endif><a
                                 href={{url('settings/localization')}}><span
                                     class="menu-text">{{language_data('Localization')}}</span> <span class="menu-thumb"><i
-                                        class="fa fa-globe"></i></span></a></li> -->
-
+                                        class="fa fa-globe"></i></span></a></li>  --}}
 
                     <!-- <li @if(Request::path()== 'settings/language-settings' OR Request::path()=='settings/language-settings-manage/'.view_id() OR Request::path()=='settings/language-settings-translate/'.view_id()) class="active" @endif>
                         <a href={{url('settings/language-settings')}}><span
@@ -470,7 +469,7 @@
                     <li class="footer"><a href="{{url('invoices/all')}}">{{language_data('See All Invoices')}}</a></li>
                 </ul>
             </li>
-
+{{-- 
             <li class="dropdown bar-notification @if(count(latest_five_tickets(0))>0) active @endif">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i
                             class="fa fa-envelope"></i></a>
@@ -488,7 +487,7 @@
                     <li class="footer"><a href="{{url('support-tickets/all')}}">{{language_data('See All Tickets')}}</a>
                     </li>
                 </ul>
-            </li>
+            </li> --}}
         </ul>
 
 

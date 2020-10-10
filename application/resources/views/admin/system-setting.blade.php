@@ -20,7 +20,7 @@
                     <ul class="nav nav-tabs" role="tablist">
                         <li role="presentation" class="active"><a href="#system-settings" aria-controls="home" role="tab" data-toggle="tab">{{language_data('System Settings')}}</a></li>
                         <li role="presentation"><a href="#system_email" aria-controls="system_email" role="tab" data-toggle="tab">{{language_data('System Email')}}</a></li>
-                        <li role="presentation"><a href="#sms_settings" aria-controls="sms_settings" role="tab" data-toggle="tab">{{language_data('SMS Settings')}}</a></li>
+                        {{-- <li role="presentation"><a href="#sms_settings" aria-controls="sms_settings" role="tab" data-toggle="tab">{{language_data('SMS Settings')}}</a></li> --}}
                         <li role="presentation"><a href="#auth_settings" aria-controls="auth_settings" role="tab" data-toggle="tab">{{language_data('Authentication Settings')}}</a></li>
                     </ul>
 

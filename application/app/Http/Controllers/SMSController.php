@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Api;
+
 use App\AppConfig;
 use App\BlackListContact;
 use App\Campaigns;
@@ -3114,7 +3116,10 @@ class SMSController extends Controller
         }
 
         $gateways = SMSGateways::where('status', 'Active')->get();
-        return view('admin.sms-api-info', compact('gateways'));
+        $api_key = \App\Api::find('1')->get()[0]->api_key;
+        // return $api_key;
+        // $invoice->api_key=$request->api_key;
+        return view('admin.sms-api-info', compact('gateways','api_key'));
     }
 
     //======================================================================
@@ -3137,12 +3142,18 @@ class SMSController extends Controller
 
 
         $v = \Validator::make($request->all(), [
-            'api_url' => 'required', 'api_key' => 'required', 'sms_gateway' => 'required'
+           'api_key' => 'required', 'sms_gateway' => 'required'
         ]);
 
         if ($v->fails()) {
             return redirect('sms-api/info')->withErrors($v->errors());
         }
+        $invoice = \App\Api::find('1')->get()[0];
+        $invoice->api_key=$request->api_key;
+        $invoice->save();
+
+        // return $invoice;
+
 
         if ($request->api_url != '') {
             AppConfig::where('setting', '=', 'api_url')->update(['value' => $request->api_url]);
