@@ -19,7 +19,6 @@
         "giggsey/libphonenumber-for-php": "^8.4",
         "google/recaptcha": "~1.1",
         "gopay/payments-sdk-php": "^1.4",
-        "guzzlehttp/guzzle": "^7.1",
         "h4cc/wkhtmltopdf-amd64": "^0.12.3",
         "ismaeltoe/osms": "^2.0",
         "jeroen-g/laravel-packager": "^1.5",
